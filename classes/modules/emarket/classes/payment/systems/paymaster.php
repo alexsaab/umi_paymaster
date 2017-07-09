@@ -88,6 +88,7 @@ class paymasterPayment extends payment {
         return false;
     }
 
+
     /**
     * Function validation sign with change hash methods
     * @param NULL
