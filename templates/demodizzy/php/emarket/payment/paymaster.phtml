@@ -1,0 +1,23 @@
+<form action="https://paymaster.ru/Payment/Init" method="post">
+  <input type="hidden" value="<?= $variables['purchase']['purchasing']['LMI_MERCHANT_ID'] ?>" name="LMI_MERCHANT_ID">
+  <input type="hidden" value="<?= $variables['purchase']['purchasing']['LMI_PAYMENT_AMOUNT'] ?>" name="LMI_PAYMENT_AMOUNT">
+  <input type="hidden" value="<?= $variables['purchase']['purchasing']['LMI_CURRENCY'] ?>" name="LMI_CURRENCY">
+  <input type="hidden" value="<?= $variables['purchase']['purchasing']['LMI_PAYMENT_NO'] ?>" name="LMI_PAYMENT_NO">
+  <input type="hidden" value="<?= $variables['purchase']['purchasing']['LMI_PAYMENT_DESC'] ?>" name="LMI_PAYMENT_DESC">
+  <input type="hidden" value="<?= $variables['purchase']['purchasing']['SIGN'] ?>" name="SIGN">
+    <?php
+    for ($i = 0; $i <= $variables['purchase']['purchasing']['key']; $i++) {
+        echo "<input type=\"hidden\" value=\"".$variables['purchase']['purchasing']["LMI_SHOPPINGCART.ITEM[{$i}].NAME"]."\" name=\"LMI_SHOPPINGCART.ITEM[".$i."].NAME\">\n";
+        echo "<input type=\"hidden\" value=\"".$variables['purchase']['purchasing']["LMI_SHOPPINGCART.ITEM[{$i}].QTY"]."\" name=\"LMI_SHOPPINGCART.ITEM[".$i."].QTY\">\n";
+        echo "<input type=\"hidden\" value=\"".$variables['purchase']['purchasing']["LMI_SHOPPINGCART.ITEM[{$i}].PRICE"]."\" name=\"LMI_SHOPPINGCART.ITEM[".$i."].PRICE\">\n";
+        echo "<input type=\"hidden\" value=\"".$variables['purchase']['purchasing']["LMI_SHOPPINGCART.ITEM[{$i}].TAX"]."\" name=\"LMI_SHOPPINGCART.ITEM[".$i."].TAX\">\n";
+    }
+    ?>
+  <div>
+    <img src="/images/payment/paymaster.png" align="left"/> Внимание! После клика на кнопке "Оплатить" - вы перейдете на сайт оплаты системы PayMaster!
+  </div>
+
+  <div>
+    <input type="submit" value="<?= $this->translate('pay') ?>" class="button big"/>
+  </div>
+</form>
